@@ -8,6 +8,7 @@ pipeline {
       steps {
         sh 'mvn -version'
        // sh 'mvn clean install spring-boot:repackage'
+        sh 'mvn clean install -U'
        sh 'mvn clean package'
       //  sh 'mvn clean'
         //sh 'mvn package'
