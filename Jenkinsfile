@@ -1,14 +1,14 @@
 pipeline {
   agent any
   tools {
-    maven '3.6.0' 
+    maven '3.8.3' 
   }
   stages {
     stage ('Build') {
       steps {
         sh 'mvn -version'
-        sh 'mvn clean install spring-boot:repackage'
-       //sh 'mvn clean package'
+       // sh 'mvn clean install spring-boot:repackage'
+       sh 'mvn clean package'
       }
     }
      stage("Sonar") {
