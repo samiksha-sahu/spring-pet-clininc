@@ -16,7 +16,7 @@
 
 package org.springframework.samples.petclinic;
 
-import org.springframework.aot.hint;
+//import org.springframework.aot.hint;
 import org.springframework.aot.hint.RuntimeHints;
 import org.springframework.aot.hint.RuntimeHintsRegistrar;
 
