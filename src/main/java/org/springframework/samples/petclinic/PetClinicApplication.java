@@ -15,6 +15,7 @@
  */
 
 package org.springframework.samples.petclinic;
+package org.springframework.context.annotation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
