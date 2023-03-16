@@ -27,19 +27,15 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
-//import javax.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 
-/**
- * @author Michael Isvy Simple test to make sure that Bean Validation is working (useful
- * when upgrading to a new version of Hibernate Validator/ Bean Validation)
- */
+
 class ValidatorTests {
 
 	private Validator createValidator() {
-		LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
+		//LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
 		//localValidatorFactoryBean.afterPropertiesSet();
-	   return localValidatorFactoryBean;
+	   //return localValidatorFactoryBean;
 	}
 
 	@Test
