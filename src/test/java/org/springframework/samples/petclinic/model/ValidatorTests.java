@@ -27,6 +27,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 /**
  * @author Michael Isvy Simple test to make sure that Bean Validation is working (useful
