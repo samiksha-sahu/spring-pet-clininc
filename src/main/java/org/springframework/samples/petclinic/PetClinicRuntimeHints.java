@@ -17,14 +17,25 @@
 package org.springframework.samples.petclinic;
 
 //import org.springframework.aot.hint;
-import org.springframework.aot.hint.RuntimeHints;
-import org.springframework.aot.hint.RuntimeHintsRegistrar;
 
-public class PetClinicRuntimeHints implements RuntimeHintsRegistrar {
+//import org.springframework.aot.hint.RuntimeHints;
+//import org.springframework.aot.hint.RuntimeHintsRegistrar;
 
-	@Override
-	public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
+// public class PetClinicRuntimeHints implements RuntimeHintsRegistrar {
+
+// 	@Override
+// 	public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
+// 		hints.resources().registerPattern("db/*"); // https://github.com/spring-projects/spring-boot/issues/32654
+// 	}
+
+// }
+
+public class PetClinicRuntimeHints {
+
+	//@Override
+	public void registerHints(ClassLoader classLoader) {
 		hints.resources().registerPattern("db/*"); // https://github.com/spring-projects/spring-boot/issues/32654
 	}
 
 }
+
