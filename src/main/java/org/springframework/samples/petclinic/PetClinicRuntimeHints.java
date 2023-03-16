@@ -34,7 +34,7 @@ public class PetClinicRuntimeHints {
 
 	//@Override
 	public void registerHints(ClassLoader classLoader) {
-		hints.resources().registerPattern("db/*"); // https://github.com/spring-projects/spring-boot/issues/32654
+		//hints.resources().registerPattern("db/*"); // https://github.com/spring-projects/spring-boot/issues/32654
 	}
 
 }
