@@ -26,7 +26,8 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validator;
+//import jakarta.validation.Validator;
+import javax.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 
 /**
