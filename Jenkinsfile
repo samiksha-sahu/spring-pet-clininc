@@ -1,3 +1,5 @@
+properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'ChoiceParameterDefinition', choices: ['cp', 'sp'], description: 'Select datacenter', name: 'datacenter'], [$class: 'ChoiceParameterDefinition', choices: environments."${params.datacenter}".split(','), description: 'Select environment', name: 'environment']]]])
+
 def props = readProperties file: 'config.properties'
 def datacenters = props.getProperty('datacenters').split(',')
 def environments = props.getProperty('environments')
