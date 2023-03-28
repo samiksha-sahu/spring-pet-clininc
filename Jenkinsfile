@@ -23,10 +23,27 @@ def environments = properties.getProperty(datacenter).split(',')
 
 // Define the parameters
 parameters {
-    // Dropdown list for environment
-    choice(name: 'environment', choices: environments, description: 'Select environment')
-}
+        choice(
+            name: 'data_center',
+            choices: props.data_centers.split(','),
+            description: 'Select a data center.'
+        )
+        choice(
+            name: 'environment',
+            choices: props.environments.split(','),
+            description: 'Select an environment.'
+        )
+    }
   stages {
+    stage('Load Properties File') {
+            steps {
+                script {
+                    def props = readProperties file: 'config.properties'
+                    echo "Data Centers: ${props.data_centers}"
+                    echo "Environments: ${props.environments}"
+                }
+            }
+        }
     stage ('Build') {
       steps {
         sh 'mvn -version'
