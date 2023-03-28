@@ -1,15 +1,7 @@
-def props = new Properties()
-fileLoader.fromFile('config.properties').withInputStream { props.load(it) }
+def props = readProperties file: 'config.properties'
+def datacenters = props.getProperty('datacenters').split(',')
+def environments = props.getProperty('environments')
 
-def datacenters = [props.'datacenter.sp', props.'datacenter.cp']
-def environments = [
-    props.'environment.preprod-sp-e2eperf',
-    props.'environment.nonprod',
-    props.'environment.preprod-sp',
-    props.'environment.preprod-cp-e2eperf',
-    props.'environment.bci-cp',
-    props.'environment.bci-sp'
-]
 pipeline {
   agent any
   tools {
@@ -19,14 +11,15 @@ pipeline {
         choice(
             name: 'datacenter',
             choices: datacenters,
-            description: 'Select the data center'
+            description: 'Select datacenter'
         )
+        
         choice(
             name: 'environment',
-            choices: environments.grep { it.contains(params.datacenter) },
-            description: 'Select the environment'
-        )
-    }
+            choices: environments."${params.datacenter}".split(','),
+            description: 'Select environment'
+               )
+           }
   stages {
     stage ('Build') {
       steps {
