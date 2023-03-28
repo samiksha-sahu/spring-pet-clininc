@@ -1,27 +1,31 @@
-properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'ChoiceParameterDefinition', choices: ['cp', 'sp'], description: 'Select datacenter', name: 'datacenter'], [$class: 'ChoiceParameterDefinition', choices: environments."${params.datacenter}".split(','), description: 'Select environment', name: 'environment']]]])
+def properties = readProperties file: 'config.properties'
 
-def props = readProperties file: 'config.properties'
-def datacenters = props.getProperty('datacenters').split(',')
-def environments = props.getProperty('environments')
 
 pipeline {
   agent any
   tools {
     maven '3.8.3' 
   }
-  parameters {
-        choice(
-            name: 'datacenter',
-            choices: datacenters,
-            description: 'Select datacenter'
-        )
-        
-        choice(
-            name: 'environment',
-            choices: environments."${params.datacenter}".split(','),
-            description: 'Select environment'
-               )
-           }
+  // Get the available data centers from the properties file
+def datacenters = properties.getProperty('datacenters').split(',')
+
+// Define the parameters
+parameters {
+    // Dropdown list for data center
+    choice(name: 'datacenter', choices: datacenters, description: 'Select data center')
+}
+
+// Read the selected data center from the build parameters
+def datacenter = params.datacenter
+
+// Get the available environments for the selected data center from the properties file
+def environments = properties.getProperty(datacenter).split(',')
+
+// Define the parameters
+parameters {
+    // Dropdown list for environment
+    choice(name: 'environment', choices: environments, description: 'Select environment')
+}
   stages {
     stage ('Build') {
       steps {
